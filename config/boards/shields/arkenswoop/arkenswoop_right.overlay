@@ -15,13 +15,11 @@
         width = <128>;
         height = <32>;
         segment-remap;
+        com-invdir;
+        com-hw-config;
+        multiplex-ratio = <31>;
+        prechargep = <0x22>;
         page-offset = <0>;
         display-offset = <0>;
-        multiplex-ratio = <31>;
-        segment-offset = <0>;
-        page-remap;
-        com-hw-config;
-        com-invdir;
-        prechargep = <0x22>;
     };
 };
