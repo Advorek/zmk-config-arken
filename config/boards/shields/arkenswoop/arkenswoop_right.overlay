@@ -21,5 +21,6 @@
         prechargep = <0x22>;
         page-offset = <0>;
         display-offset = <0>;
+        segment-offset = <0>; // Ten parametr jest wymagany przez kompilator
     };
 };
