@@ -1,1 +1,2 @@
+import "Kconfig"
 source "config/boards/shields/arkenswoop/Kconfig.shield"
