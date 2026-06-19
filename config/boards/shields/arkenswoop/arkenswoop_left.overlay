@@ -1,0 +1,44 @@
+#include "arkenswoop.dtsi"
+
+&kscan0 {
+    // Jeśli to klawiatura typu "split direct pin" lub ma dedykowany offset kolumn
+};
+
+// Konfiguracja ekranu OLED na lewej połówce (Piny I2C: zwykle SDA=SDA, SCL=SCL)
+&pro_micro_i2c {
+    status = "okay";
+
+    oled: ssd1306@3c {
+        compatible = "solomon,ssd1306fb";
+        reg = <0x3c>;
+        label = "DISPLAY";
+        width = <128>;
+        height = <32>;
+        segment-remap;
+        page-offset = <0>;
+        display-offset = <0>;
+        multiplex-ratio = <31>;
+        segment-offset = <0>;
+        page-remap;
+        com-hw-config;
+        com-invdir;
+        prechargep = <0x22>;
+    };
+};
+
+// Konfiguracja lewego enkodera rolkowego
+/ {
+    left_encoder: encoder_left {
+        compatible = "alps,ec11";
+        label = "LEFT_ENCODER";
+        a-gpios = <&pro_micro 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        b-gpios = <&pro_micro 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        steps = <80>;
+    };
+
+    sensors {
+        compatible = "zmk,keymap-sensors";
+        sensors = <&left_encoder>;
+        triggers-per-rotation = <20>;
+    };
+};
