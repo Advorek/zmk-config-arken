@@ -15,8 +15,6 @@
                             &kp LCTRL &kp SPC       &kp BSPC &kp RGUI
             >;
 
-            // Zachowanie enkodera bocznego (np. Scrollowanie myszką lub Volume)
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
     };
 };
